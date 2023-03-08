@@ -1,0 +1,132 @@
+
+/* main  estilização */
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+    color:black; 
+}
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: 	#4f4f4f;
+    color: black;
+    height: 80px;
+    font-weight: bold;
+    font-size: 30pt;
+}
+img {
+    width: 65px;
+    height: 60px;
+}
+#navbarNav {
+    margin-left: 70%;
+}
+#register{
+   background-color: 	#6495ED;
+}
+#login{
+    background-color: #6495ED;
+ }
+ #forgot{
+    background-color: #6495ED;
+ }
+#logo{
+    height: 130px;
+    width: 130px;
+}
+#name{
+    border-color: black;
+}
+#email{
+    border-color: black;  
+}
+#password{
+    border-color: black;
+}
+#button{
+    border-color: black;
+}
+#remember{
+    border-color: black;
+}
+#confirmPassword{
+    border-color: black;
+}
+#mainNavbar {
+    font-size: 1.5rem;
+    font-weight: 100;
+  }
+  
+  #mainNavbar .nav-link {
+    color: #4f4f4f;;
+  }
+  #mainNavbar .nav-link:hover {
+    color: #4f4f4f;
+  }
+  
+  #mainNavbar .navbar-brand {
+    color: #363636;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .navbar.scrolled {
+    background: rgb(137, 151, 222);
+    transition: background 500ms;
+  }
+  #index{
+    color: 	#1E90FF;
+    font-weight: bold;
+  }
+  #logout{
+    margin-left: 50px;
+  }
+  #nameSession{
+    margin-left: 10px;
+    margin-top: 0px;
+  }
+  .profile {
+    width: 25px;
+    height: 25px;
+    background-color: blue;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 10px;
+  }
+  .contacts{
+    background-color: #4f4f4f;
+    margin-top: 15px;
+  }
+  .images{
+    margin-left: 15px;
+  }
+  #bodyHome{
+      margin: 0;
+      font-family: var(--bs-font-sans-serif);
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #212529;
+      background-color: #fff;
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+      background-color: #B0C4DE;
+  }
+  /* Corpo Interno do CRUD */
+#inputs{
+  border-radius: 10px;
+  height: 60px;
+  width: 50px;
+}
+#select{
+  border-radius: 10px;
+  height: 60px;
+  width: 50px;
+}
