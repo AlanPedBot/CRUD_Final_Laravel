@@ -149,7 +149,6 @@
             @include('layouts.components.footer')
         </div>
         <script type="text/javascript" src="/js/delay.js"></script>
-
     </body>
 
 @endsection
