@@ -177,7 +177,6 @@
                 </nav>
             </div>
         @endif
-
         <div class="footer">
             @include('layouts.components.footer')
         </div>
