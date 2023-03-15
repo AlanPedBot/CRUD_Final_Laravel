@@ -164,7 +164,6 @@
                                 </li>
                             @endif
                         @endforeach
-
                         {{-- Botão "Próximo" --}}
                         @if ($books->hasMorePages())
                             <li class="page-item"><a class="page-link"
