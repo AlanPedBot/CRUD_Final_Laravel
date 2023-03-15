@@ -6,7 +6,7 @@
         <meta name="author" content="Muhamad Nauval Azhar">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <meta name="description" content="This is a login page template based on Bootstrap 5">
-        <link rel="stylesheet" href="/css/style1.css">
+        <link rel="stylesheet" href="/css/style.css">
         <title>Home</title>
         <link id="cabeçalho" rel="icon" type="image/x-icon"
             href="https://images.vexels.com/media/users/3/229082/isolated/preview/6fabc24c3830d75486725cc6d786dfbb-logotipo-dos-circulos-do-livro.png">
@@ -99,7 +99,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
+            <div class="container" style="margin-bottom: 50px; ">
                 <div class="container">
                     <div class="container-fluid">
                         <div>
@@ -146,8 +146,5 @@
                 @include('layouts.components.footer')
             </div>
         </div>
-
-
-
     </body>
 @endsection

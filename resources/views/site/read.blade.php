@@ -6,7 +6,7 @@
         <meta name="author" content="Muhamad Nauval Azhar">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <meta name="description" content="This is a login page template based on Bootstrap 5">
-        <link rel="stylesheet" href="/css/style1.css">
+        <link rel="stylesheet" href="/css/style.css">
         <title>Busca - Livros</title>
         <link id="cabeçalho" rel="icon" type="image/x-icon"
             href="https://images.vexels.com/media/users/3/229082/isolated/preview/6fabc24c3830d75486725cc6d786dfbb-logotipo-dos-circulos-do-livro.png">
@@ -21,41 +21,13 @@
                 <p style="font-weight: bold;  text-align: center;" class=" fs-2 ">Nome do livro</p>
                 <input id="inputs" class="w-25 p-3" type="text" value="{{ old('name') }}" name="name"
                     placeholder="Digite o nome do livro">
-                <div>
+                <div style=" text-align: center;">
                     {{ $errors->has('name') ? $errors->first('name') : '' }}
                 </div>
                 <div style=" text-align: center;">
-                    <button type="submit" name="read" class="btn btn-primary btn-lg"
+                    <button type="submit" name="read" value="readBook" class="btn btn-primary btn-lg"
                         style="margin-top: 10px; font-weight: bold;">BUSCAR</button>
                 </div>
-                @if (session()->has('read'))
-                    <div style="width: 300px; text-align:center; margin: 0 auto; margin-top:10px;"
-                        class="alert alert-success" id="alert">
-                        {{ session('read') }}
-                        <span style='font-size:20px;'>&#128513;</span>
-                    </div>
-                @endif
-                @if (session()->has('update'))
-                    <div style="width: 300px; text-align:center; margin: 0 auto; margin-top:10px;"
-                        class="alert alert-success" id="alert">
-                        {{ session('update') }}
-                        <span style='font-size:20px;'>&#128513;</span>
-                    </div>
-                @endif
-                @if (session()->has('delete'))
-                    <div style="width: 300px; text-align:center; margin: 0 auto; margin-top:10px;"
-                        class="alert alert-success" id="alert">
-                        {{ session('delete') }}
-                        <span style='font-size:20px;'>&#128077;</span>
-                    </div>
-                @endif
-                @if (session()->has('erro'))
-                    <div style="width: 300px; text-align:center; margin: 0 auto; margin-top:10px;"
-                        class="alert alert-danger" id="alert">
-                        {{ session('erro') }}
-                        <span style='font-size:20px;'>&#128533;</span>
-                    </div>
-                @endif
             </div>
         </form>
         <div class="container" style="margin-top: 10px;">
@@ -67,7 +39,6 @@
                     <h3 style="font-weight: bold">Tabela - Livros</h3>
                     <thead>
                         <tr>
-                            <th>Id</th>
                             <th>Nome do Livro</th>
                             <th>Id da Locação</th>
                             <th>Id da Seção</th>
@@ -78,7 +49,7 @@
                     <tbody>
                         @foreach ($books as $book)
                             <tr>
-                                <td width=" 35%"><strong>{{ $book->id }}</strong></td>
+
                                 <td width=" 45%"><strong>{{ $book->name }}</strong></td>
                                 <td width=" 35%"><strong>{{ $book->book_borrowed_id }}</strong></td>
                                 <td width="35%"><strong>{{ $book->session_id }}</strong></td>
@@ -94,20 +65,81 @@
                                                 </svg></a></button></strong>
                                 </td>
                                 <td width="35%">
-                                    <strong><button class="btn btn-danger ms-auto" type="submit"><a
-                                                style="color: white; text-decoration:none;font-weight:bold;"
-                                                href="{{ route('site.delete', $book->id) }}"><svg
-                                                    xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                                                    fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
-                                                </svg></a></button></strong>
+                                    <strong><button type="button" class="btn btn-danger ms-auto" data-bs-toggle="modal"
+                                            data-bs-target="#staticBackdrop"><svg xmlns="http://www.w3.org/2000/svg"
+                                                width="25" height="25" fill="currentColor" class="bi bi-trash3"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                                            </svg></button></strong>
                                 </td>
-                            </tr>
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                    aria-hidden="true">
+                                    <div class=" modal-dialog">
+                                        <div class=" modal-content" style="background-color:#c8c8b4;">
+                                            <div class="modal-header">
+                                                <div>
+                                                    <img src="https://cdn-icons-png.flaticon.com/512/564/564619.png"
+                                                        alt=""
+                                                        style="height: 40px; width: 40px; margin-right: 15px;">
+                                                </div>
+                                                <h1 class="modal-title fs-5" id="staticBackdropLabel"
+                                                    style="color: red; font-weight:bold;">
+                                                    ALERTA</h1>
+
+
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p style="color:black; font-size:20px">Tem certeza que deseja deletar
+                                                    este
+                                                    Livro?
+                                                    Você não voltará
+                                                    a velo
+                                                    novamente!!!
+                                                </p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-danger"><a
+                                                        style="color: white; text-decoration:none; font-weight:bold;"
+                                                        href="{{ route('site.delete', $book->id) }}"> EXCLUIR</a></button>
+                                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                                    style="font-weight:bold;">CANCELAR</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                         @endforeach
                     </tbody>
                 </table>
             </div>
+            @if (session()->has('read'))
+                <div style="width: 300px; text-align:center; margin: 0 auto; margin-top:10px;" class="alert alert-success"
+                    id="alert">{{ session('read') }}
+                    <span style='font-size:20px;'>&#128513;</span>
+                </div>
+            @endif
+            @if (session()->has('update'))
+                <div style="width: 300px; text-align:center; margin: 0 auto; margin-top:10px;" class="alert alert-success"
+                    id="alert">{{ session('update') }}
+                    <span style='font-size:20px;'>&#128513;</span>
+                </div>
+            @endif
+            @if (session()->has('delete'))
+                <div style="width: 300px; text-align:center; margin: 0 auto; margin-top:10px;" class="alert alert-success"
+                    id="alert">
+                    {{ session('delete') }}
+                    <span style='font-size:20px;'>&#128077;</span>
+                </div>
+            @endif
+            @if (session()->has('erro'))
+                <div style="width: 300px; text-align:center; margin: 0 auto; margin-top:10px;" class="alert alert-danger"
+                    id="alert">{{ session('erro') }}
+                    <span style='font-size:20px;'>&#128533;</span>
+                </div>
+            @endif
         </div>
         @if ($books instanceof Illuminate\Pagination\LengthAwarePaginator)
             <div>
@@ -145,10 +177,11 @@
                 </nav>
             </div>
         @endif
+
         <div class="footer">
             @include('layouts.components.footer')
         </div>
-        <script type="text/javascript" src="/js/delay.js"></script>
+        <script type="text/javascript" src="/js/file.js"></script>
 
     </body>
 @endsection

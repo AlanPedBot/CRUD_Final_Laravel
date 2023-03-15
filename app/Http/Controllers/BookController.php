@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BookModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class BookController extends Controller
 {
@@ -53,20 +54,19 @@ class BookController extends Controller
         }
         $name = $request->input('name');
 
-        $count = DB::table('book_models')
-            ->where('name', $name)
-            ->count();
-
         $books = DB::table('book_models')
             ->where('name', 'like', '%' . $name . '%')
             ->paginate(2);
 
-        if (($count > 0)) {
-            session()->flash('site.read', 'Busca realizada com sucesso!!!');
+        if ($request->has('read')) {
+            if ($books->isEmpty()) {
+                session()->flash('erro', 'O livro não existe!!!');
+            } else {
+                session()->flash('read', 'Busca realizada com sucesso!!!');
+            }
             return view('site.read', ['books' => $books, 'request' => $request->all()]);
         } else {
-            // session()->flash('erro', 'O livro não existe!!!');
-            return view('site.read',  ['books' => $books]);
+            return view('site.read', ['books' => $books]);
         }
     }
     public function edit($id)
@@ -92,7 +92,7 @@ class BookController extends Controller
     {
         $book = BookModel::findOrFail($id);
         $book->delete();
-        session()->flash('site.delete', 'Livro deletado com sucesso!!');
+        session()->flash('delete', 'Livro deletado com sucesso!!');
         return redirect()->route('site.read');
     }
 }

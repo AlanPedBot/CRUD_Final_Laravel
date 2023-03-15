@@ -13,7 +13,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style1.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
@@ -29,7 +29,8 @@
         <nav class="navbar navbar-expand-md shadow-sm" id="app1">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/login') }}">
-                    <img src="http://d2r9epyceweg5n.cloudfront.net/stores/002/572/096/themes/common/logo-403573193-1670074052-cc26f63e887f5a1e8ddfb5e0ddb158461670074052.png?0"
+                    <img class="image"
+                        src="http://d2r9epyceweg5n.cloudfront.net/stores/002/572/096/themes/common/logo-403573193-1670074052-cc26f63e887f5a1e8ddfb5e0ddb158461670074052.png?0"
                         alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -48,6 +49,11 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
+                            @if (Route::has('homePage'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('homePage') }}">{{ __('Home') }}</a>
+                                </li>
+                            @endif
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -56,7 +62,7 @@
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Cadastrar') }}</a>
                                 </li>
                             @endif
                         @else

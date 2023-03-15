@@ -10,8 +10,12 @@
 }
 
 img {
-    width: 65px;
-    height: 60px;
+  width: 160px;
+  height: 200px;
+}
+.image{
+  width: 65px;
+  height: 60px;
 }
 
 #logo{
@@ -81,6 +85,7 @@ img {
       background-color: #f5f5dc;
       -webkit-text-size-adjust: 100%;
       -webkit-tap-highlight-color: transparent;
+      min-height: 100vh;
   }
   /* Corpo Interno do CRUD */
 #inputs{
@@ -102,7 +107,9 @@ img {
         line-height: 60px;
         position: fixed;
         bottom: 0;
+        left: 0;
         width: 100%;
+        margin-top: 50px;
 } 
 #app1{
   background-color:#c8c8b4;
@@ -117,4 +124,17 @@ img {
   justify-content: center;
   background-color: #f5f5dc;
   margin-top: 10px;
+}
+#book-images {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+#book-images img {
+  margin-left: 30px;
+  margin-right: 30px;
+  height: 200px;
+  width: 150px;
+  margin-bottom: 20px;
 }

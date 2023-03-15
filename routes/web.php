@@ -1,5 +1,6 @@
 <?php
 
+use App\Mail\Mail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -17,21 +18,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Auth::routes();
+Route::get('/', [App\Http\Controllers\HomePageController::class, 'homePage'])->name('homePage');
 
+Auth::routes(['verify' => true]);
 Route::prefix('/biblioteca')->group(function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('site.home');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('site.home')->middleware('verified');
 
-    Route::get('/adicionar', [\App\Http\Controllers\BookController::class, 'create'])->name('site.create');
-    Route::post('/adicionar', [\App\Http\Controllers\BookController::class, 'create'])->name('site.create');
+    Route::get('/adicionar', [\App\Http\Controllers\BookController::class, 'create'])->name('site.create')->middleware('verified');
+    Route::post('/adicionar', [\App\Http\Controllers\BookController::class, 'create'])->name('site.create')->middleware('verified');
 
 
-    Route::get('/buscar', [\App\Http\Controllers\BookController::class, 'read'])->name('site.read');
-    Route::post('/buscar', [\App\Http\Controllers\BookController::class, 'read'])->name('site.read');
+    Route::get('/buscar', [\App\Http\Controllers\BookController::class, 'read'])->name('site.read')->middleware('verified');
+    Route::post('/buscar', [\App\Http\Controllers\BookController::class, 'read'])->name('site.read')->middleware('verified');
 
-    Route::get('/{id}/editar', [\App\Http\Controllers\BookController::class, 'edit'])->name('site.edit');
-    Route::put('/{id}/editar', [\App\Http\Controllers\BookController::class, 'update'])->name('site.update');
+    Route::get('/{id}/editar', [\App\Http\Controllers\BookController::class, 'edit'])->name('site.edit')->middleware('verified');
+    Route::put('/{id}/editar', [\App\Http\Controllers\BookController::class, 'update'])->name('site.update')->middleware('verified');
 
-    Route::delete('/deletar/{id}', [\App\Http\Controllers\BookController::class, 'destroy'])->name('site.delete');
-    Route::get('/deletar/{id}', [\App\Http\Controllers\BookController::class, 'destroy'])->name('site.delete');
+    Route::delete('/deletar/{id}', [\App\Http\Controllers\BookController::class, 'destroy'])->name('site.delete')->middleware('verified');
+    Route::get('/deletar/{id}', [\App\Http\Controllers\BookController::class, 'destroy'])->name('site.delete')->middleware('verified');
 });

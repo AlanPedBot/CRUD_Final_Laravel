@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
 <body>
     <form method="POST"
         action="{{$book->id) }}>
@@ -9,6 +10,7 @@
         class="btn btn-danger">Excluir</button>
     </form>
 @include('layouts.components.footer')
+<script type="text/javascript" src="/js/file.js"></script>
 </body>
 
 </html>

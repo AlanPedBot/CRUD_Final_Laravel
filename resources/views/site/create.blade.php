@@ -6,7 +6,7 @@
         <meta name="author" content="Muhamad Nauval Azhar">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <meta name="description" content="This is a login page template based on Bootstrap 5">
-        <link rel="stylesheet" href="/css/style1.css">
+        <link rel="stylesheet" href="/css/style.css">
         <title>Adiciona - Livros</title>
         <link id="cabeçalho" rel="icon" type="image/x-icon"
             href="https://images.vexels.com/media/users/3/229082/isolated/preview/6fabc24c3830d75486725cc6d786dfbb-logotipo-dos-circulos-do-livro.png">
@@ -15,17 +15,18 @@
     <body id="bodyHome">
 
         <!-- formulario que pega as informações pelos inputs  -->
-        <form method="post" action="{{ route('site.create') }}">
+        <form style="margin-bottom: 50px; " method="post" action="{{ route('site.create') }}">
             @csrf
             <div id="labels" class="mx-auto" style="margin-top: 5px;">
                 <h1 style="font-weight: bold; text-align: center">Inserindo Livro</h1>
                 <p style="font-weight: bold; text-align: center;" class="fs-2">Nome</p>
                 <input id="inputs" class="w-25 p-4" type="text" value="{{ old('name') }}" name="name"
                     placeholder="Digite o nome do livro">
-                <div>
+                <div style=" text-align: center;">
                     {{ $errors->has('name') ? $errors->first('name') : '' }}
                 </div>
-                <p style="font-weight: bold; text-align: center;" class="fs-2" style="margin-top: 15px;">Seção do Livro
+                <p style="font-weight: bold; text-align: center;" class="fs-2" style="margin-top: 15px;">Seção do
+                    Livro
                 </p>
                 <select id="select" class="w-25" name="session_id">
                     <option value="" selected>Qual a Seção do Livro???</option>
@@ -44,18 +45,20 @@
                     <button type="submit" name="add" class="btn btn-primary btn-lg"
                         style="margin-top: 15px; font-weight: bold;">ADICIONAR</button>
                 </div>
-                @if (session()->has('create'))
+                @if (session()->has('site.create'))
                     <div style="width: 300px; text-align:center; margin: 0 auto; margin-top:10px;"
                         class="alert alert-success" id="alert">
-                        {{ session('create') }}
+                        {{ session('site.create') }}
                         <span style='font-size:20px;'>&#128513;</span>
                     </div>
                 @endif
+
             </div>
         </form>
         <div class="footer">
             @include('layouts.components.footer')
         </div>
-        <script type="text/javascript" src="/js/delay.js"></script>
+        <script type="text/javascript" src="/js/file.js"></script>
+
     </body>
 @endsection
