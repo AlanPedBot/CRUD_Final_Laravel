@@ -182,6 +182,5 @@
             @include('layouts.components.footer')
         </div>
         <script type="text/javascript" src="/js/file.js"></script>
-
     </body>
 @endsection
