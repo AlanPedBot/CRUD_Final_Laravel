@@ -42,14 +42,13 @@ img {
 #mainNavbar {
     font-size: 1.5rem;
     font-weight: 100;
-  }
+  } 
   #mainNavbar .nav-link {
     color: #4f4f4f;;
   }
   #mainNavbar .nav-link:hover {
     color: #4f4f4f;
   }
-  
   #mainNavbar .navbar-brand {
     color: #363636;
     font-size: 1.5rem;
